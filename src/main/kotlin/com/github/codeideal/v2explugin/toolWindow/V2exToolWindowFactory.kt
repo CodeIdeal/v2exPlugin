@@ -12,6 +12,12 @@ import com.github.codeideal.v2explugin.ui.App
 
 class V2exToolWindowFactory : ToolWindowFactory {
 
+    init {
+        // from `Jewel` project tips. See: https://github.com/JetBrains/jewel?tab=readme-ov-file#swing-interoperability
+        // https://blog.jetbrains.com/kotlin/2023/08/compose-multiplatform-1-5-0-release/#enhanced-swing-interop
+        System.setProperty("compose.swing.render.on.graphics", "true")
+    }
+
     override fun createToolWindowContent(project: Project, toolWindow: ToolWindow) {
         val myToolWindow = MyToolWindow(toolWindow)
         val content = ContentFactory.getInstance().createContent(myToolWindow.getContent(), null, false)
