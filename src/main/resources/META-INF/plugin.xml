@@ -9,7 +9,7 @@
     <resource-bundle>messages.PluginBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.codeideal.v2explugin.toolWindow.V2exToolWindowFactory" id="V2exToolWindow"/>
+        <toolWindow factoryClass="com.github.codeideal.v2explugin.toolWindow.V2exToolWindowFactory" id="V2ex"/>
     </extensions>
 
     <applicationListeners>
