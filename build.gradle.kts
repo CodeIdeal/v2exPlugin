@@ -54,6 +54,11 @@ intellij {
     plugins = properties("platformPlugins").map { it.split(',').map(String::trim).filter(String::isNotEmpty) }
 }
 
+compose {
+    // See: https://github.com/JetBrains/compose-multiplatform/issues/4059
+    kotlinCompilerPlugin.set("1.5.7")
+}
+
 // Configure Gradle Changelog Plugin - read more: https://github.com/JetBrains/gradle-changelog-plugin
 changelog {
     groups.empty()
