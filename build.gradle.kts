@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
     alias(libs.plugins.qodana) // Gradle Qodana Plugin
     alias(libs.plugins.kover) // Gradle Kover Plugin
+    alias(libs.plugins.compose) // compose ui for intellij plugin
 }
 
 group = properties("pluginGroup").get()
@@ -19,11 +20,19 @@ version = properties("pluginVersion").get()
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    // repositorie for jewel(Compose Theme for Intellij Style)
+    maven("https://packages.jetbrains.team/maven/p/kpm/public/")
 }
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-//    implementation(libs.annotations)
+    // compose ui
+    implementation(compose.desktop.currentOs){
+        exclude(group = "org.jetbrains.kotlinx")
+    }
+    implementation(compose.material3){
+        exclude(group = "org.jetbrains.kotlinx")
+    }
 }
 
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
