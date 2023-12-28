@@ -29,6 +29,7 @@ import com.github.codeideal.v2explugin.ui.theme.AppTheme
  *
  * @create: 2023/12/27 19:18
  **/
+@Suppress("FunctionName")
 @Composable
 fun App(service: V2exService) {
     AppTheme{
