@@ -12,6 +12,10 @@
         <toolWindow factoryClass="com.github.codeideal.v2explugin.toolWindow.V2exToolWindowFactory" id="V2ex"/>
     </extensions>
 
+    <projectListeners>
+        <listener class="com.github.codeideal.v2explugin.listeners.ToolWindowListener" topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"/>
+    </projectListeners>
+
     <applicationListeners>
         <listener class="com.github.codeideal.v2explugin.listeners.PluginApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
         <listener class="com.github.codeideal.v2explugin.listeners.PluginAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
