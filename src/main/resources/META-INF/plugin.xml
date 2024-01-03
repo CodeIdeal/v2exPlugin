@@ -14,5 +14,6 @@
 
     <applicationListeners>
         <listener class="com.github.codeideal.v2explugin.listeners.PluginApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener class="com.github.codeideal.v2explugin.listeners.PluginAppLifecycleListener" topic="com.intellij.ide.AppLifecycleListener"/>
     </applicationListeners>
 </idea-plugin>
