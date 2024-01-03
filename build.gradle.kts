@@ -7,6 +7,7 @@ fun environment(key: String) = providers.environmentVariable(key)
 plugins {
     id("java") // Java support
     alias(libs.plugins.kotlin) // Kotlin support
+    alias(libs.plugins.ksp)
     alias(libs.plugins.gradleIntelliJPlugin) // Gradle IntelliJ Plugin
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
     alias(libs.plugins.qodana) // Gradle Qodana Plugin
@@ -20,6 +21,7 @@ version = properties("pluginVersion").get()
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    gradlePluginPortal()
     // repositorie for jewel(Compose Theme for Intellij Style)
     maven("https://packages.jetbrains.team/maven/p/kpm/public/")
 }
@@ -30,9 +32,19 @@ dependencies {
     implementation(compose.desktop.currentOs){
         exclude(group = "org.jetbrains.kotlinx")
     }
+    // Material3
     implementation(compose.material3){
         exclude(group = "org.jetbrains.kotlinx")
     }
+    // koin core
+    implementation(libs.koin.core)
+    // koin compose
+    implementation(libs.koin.compose)
+    // koin anno
+    implementation(libs.koin.anno)
+    // koin ksp
+    ksp(libs.koin.ksp)
+
 }
 
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
@@ -42,6 +54,17 @@ kotlin {
         languageVersion = JavaLanguageVersion.of(17)
         vendor = JvmVendorSpec.JETBRAINS
     }
+}
+
+// KSP processor options
+ksp {
+    // check your Koin configuration at compile time
+    arg("KOIN_CONFIG_CHECK","true")
+}
+
+// KSP - To use generated sources
+sourceSets.main {
+    java.srcDirs("build/generated/ksp/main/kotlin")
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
