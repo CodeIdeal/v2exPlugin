@@ -29,13 +29,9 @@ repositories {
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
     // compose ui
-    implementation(compose.desktop.currentOs){
-        exclude(group = "org.jetbrains.kotlinx")
-    }
+    implementation(compose.desktop.currentOs)
     // Material3
-    implementation(compose.material3){
-        exclude(group = "org.jetbrains.kotlinx")
-    }
+    implementation(compose.material3)
     // koin core
     implementation(libs.koin.core)
     // koin compose
@@ -44,6 +40,14 @@ dependencies {
     implementation(libs.koin.anno)
     // koin ksp
     ksp(libs.koin.ksp)
+
+    // ktor
+    implementation(libs.ktor.core)
+    implementation(libs.ktor.cio)
+
+    // coil
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network)
 
 }
 
@@ -60,6 +64,11 @@ kotlin {
 ksp {
     // check your Koin configuration at compile time
     arg("KOIN_CONFIG_CHECK","true")
+}
+
+configurations.all {
+    exclude("org.slf4j", "slf4j-api")
+    exclude("org.jetbrains.kotlinx")
 }
 
 // KSP - To use generated sources
