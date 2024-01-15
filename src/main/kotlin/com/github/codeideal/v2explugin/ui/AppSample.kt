@@ -28,6 +28,7 @@ import com.github.codeideal.v2explugin.koin.IsolateInjectContext
 import com.github.codeideal.v2explugin.koin.V2exService
 import com.github.codeideal.v2explugin.ui.theme.AppTheme
 import com.github.codeideal.v2explugin.util.loadBitmap
+import com.github.codeideal.v2explugin.widget.ResImage
 import org.koin.compose.KoinIsolatedContext
 import org.koin.compose.koinInject
 
@@ -86,6 +87,12 @@ fun AppSample(v2exService: V2exService = koinInject()) {
                         model = ImageRequest.Builder(LocalPlatformContext.current)
                             .data("https://www.bing.com/th?id=OHR.DevilsMarbles_ZH-CN4897809914_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp")
                             .build(),
+                        contentDescription = null,
+                        modifier = Modifier.width(160.dp).height(160.dp).border(2.dp, Color.Red),
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    ResImage(
+                        resPath = "pics/placeHolder.png",
                         contentDescription = null,
                         modifier = Modifier.width(160.dp).height(160.dp).border(2.dp, Color.Red),
                     )
