@@ -50,6 +50,11 @@ dependencies {
     implementation(libs.coil.network.okhttp)
     implementation(libs.coil.svg)
 
+    // ghui
+    implementation(libs.ghui.fruit)
+    implementation(libs.ghui.fruitConverterRetrofit)
+    implementation(libs.ghui.globalRetrofitConverter)
+
 }
 
 // Set the JVM language level used to build the project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.

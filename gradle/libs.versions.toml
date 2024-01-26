@@ -7,6 +7,9 @@ koinCompose = "1.1.2"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
 coil = "3.0.0-alpha03"
+fruit = "1.0.4"
+fruitConverterRetrofit = "1.0.5"
+globalRetrofitConverter = "1.0.2"
 
 # plugins
 kotlin = "1.9.22"
@@ -19,12 +22,23 @@ ksp = "1.9.22-1.0.17"
 
 [libraries]
 annotations = { group = "org.jetbrains", name = "annotations", version.ref = "annotations" }
+
+# koin
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koinCompose" }
 koin-anno = { group = "io.insert-koin", name = "koin-annotations", version.ref = "koinKsp" }
 koin-ksp = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koinKsp" }
+
+# api
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+
+# ghui v2er
+ghui-fruit = { group = "me.ghui", name = "Fruit", version.ref = "fruit" }
+ghui-fruitConverterRetrofit = { group = "me.ghui", name = "fruit-converter-retrofit", version.ref = "fruitConverterRetrofit" }
+ghui-globalRetrofitConverter = { group = "me.ghui", name = "global-retrofit-converter", version.ref = "globalRetrofitConverter" }
+
+# coil
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 coil-svg = { group = "io.coil-kt.coil3", name = "coil-svg", version.ref = "coil" }
