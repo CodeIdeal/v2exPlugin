@@ -42,12 +42,11 @@ dependencies {
     ksp(libs.koin.ksp)
 
     // ktor
-    implementation(libs.ktor.core)
-    implementation(libs.ktor.cio)
+    implementation(libs.okhttp)
 
     // coil
     implementation(libs.coil.compose)
-    implementation(libs.coil.network)
+    implementation(libs.coil.network.okhttp)
 
 }
 
