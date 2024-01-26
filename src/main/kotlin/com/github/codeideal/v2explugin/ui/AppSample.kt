@@ -2,6 +2,8 @@ package com.github.codeideal.v2explugin.ui
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
@@ -18,7 +20,6 @@ import coil3.asCoilImage
 import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.compose.setSingletonImageLoaderFactory
-import coil3.fetch.NetworkFetcher
 import coil3.memory.MemoryCache
 import coil3.request.CachePolicy
 import coil3.request.ImageRequest
@@ -28,6 +29,7 @@ import com.github.codeideal.v2explugin.koin.IsolateInjectContext
 import com.github.codeideal.v2explugin.koin.V2exService
 import com.github.codeideal.v2explugin.ui.theme.AppTheme
 import com.github.codeideal.v2explugin.util.loadBitmap
+import com.github.codeideal.v2explugin.util.loadResBytes
 import com.github.codeideal.v2explugin.widget.ResImage
 import org.koin.compose.KoinIsolatedContext
 import org.koin.compose.koinInject
@@ -48,9 +50,6 @@ fun AppSample(v2exService: V2exService = koinInject()) {
     val placeHolderBitmap = remember { loadBitmap("pics/placeHolder.png") }
     setSingletonImageLoaderFactory { context ->
         ImageLoader.Builder(context)
-            .components {
-                add(NetworkFetcher.Factory())
-            }
             .placeholder(placeHolderBitmap.asCoilImage())
             .diskCachePolicy(CachePolicy.DISABLED)
             .memoryCache {
@@ -72,10 +71,15 @@ fun AppSample(v2exService: V2exService = koinInject()) {
     KoinIsolatedContext(context = IsolateInjectContext.koinApp) {
         AppTheme {
             Box(contentAlignment = Alignment.Center) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    var randomInt by remember { mutableStateOf(0) }
-                    Text("Random: $randomInt")
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .fillMaxSize()
+                ) {
+
                     Spacer(modifier = Modifier.height(8.dp))
+                    var randomInt by remember { mutableStateOf(0) }
+                    Text("# Random: $randomInt")
                     Button(onClick = { randomInt = v2exService.getRandomInt(10) }) {
                         Icon(
                             imageVector = Icons.Default.Refresh,
@@ -83,6 +87,9 @@ fun AppSample(v2exService: V2exService = koinInject()) {
                         )
                         Text("Next Int")
                     }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("# Coil Load Net Image")
                     AsyncImage(
                         model = ImageRequest.Builder(LocalPlatformContext.current)
                             .data("https://www.bing.com/th?id=OHR.DevilsMarbles_ZH-CN4897809914_UHD.jpg&rf=LaDigue_UHD.jpg&pid=hp")
@@ -90,7 +97,19 @@ fun AppSample(v2exService: V2exService = koinInject()) {
                         contentDescription = null,
                         modifier = Modifier.width(160.dp).height(160.dp).border(2.dp, Color.Red),
                     )
+
                     Spacer(modifier = Modifier.height(16.dp))
+                    Text("# Coil Load Local Image")
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalPlatformContext.current)
+                            .data(loadResBytes("pics/placeHolder.svg"))
+                            .build(),
+                        contentDescription = null,
+                        modifier = Modifier.width(160.dp).height(160.dp).border(2.dp, Color.Red),
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text("# ResImage Load Local Image")
                     ResImage(
                         resPath = "pics/placeHolder.png",
                         contentDescription = null,

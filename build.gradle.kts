@@ -43,10 +43,12 @@ dependencies {
 
     // ktor
     implementation(libs.okhttp)
+    implementation(libs.retrofit)
 
     // coil
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+    implementation(libs.coil.svg)
 
 }
 

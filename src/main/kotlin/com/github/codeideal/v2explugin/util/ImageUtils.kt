@@ -19,6 +19,11 @@ import org.jetbrains.skia.Image
  *
  * @create: 2024/1/6 23:56
  **/
+fun loadResBytes(path: String): ByteArray {
+    Thread.currentThread().contextClassLoader = V2exToolWindowFactory::class.java.classLoader
+    return useResource(path){ it.readAllBytes() }
+}
+
 fun loadImage(path: String): Image {
     Thread.currentThread().contextClassLoader = V2exToolWindowFactory::class.java.classLoader
     val bitmap = useResource(path){ loadImageBitmap(it) }
