@@ -1,5 +1,6 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 fun properties(key: String) = providers.gradleProperty(key)
 fun environment(key: String) = providers.environmentVariable(key)
@@ -64,6 +65,10 @@ kotlin {
         languageVersion = JavaLanguageVersion.of(17)
         vendor = JvmVendorSpec.JETBRAINS
     }
+}
+
+tasks.named<KotlinCompilationTask<*>>("compileKotlin").configure {
+    compilerOptions.freeCompilerArgs.add("-opt-in=coil3.annotation.ExperimentalCoilApi")
 }
 
 // KSP processor options
