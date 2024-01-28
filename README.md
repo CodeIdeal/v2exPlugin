@@ -17,12 +17,12 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-This is a Compose Multiplatform plugin for Intellij that makes it easy to browse V2ex forum posts.
-Compose Multiplatform is known to be an active cross-platform UI framework using the Kotlin language. 
-As an Android developer, I really like Kotlin, and I really like Jetpack Compose.
-Google and Jetbrains are two of my favorite technology-based business companies.
-Now you can develop Intellij plugins using Kotlin on Jetbrains' Intellij platform, and still use Jetbrains' Jetpack Compose-based Compose Multiplatform.
-What more could one wish for?
+- This is a Compose Multiplatform plugin for Intellij that makes it easy to browse V2ex forum posts.  
+- Compose Multiplatform is known to be an active cross-platform UI framework using the Kotlin language.   
+- As an Android developer, I really like Kotlin, and I really like Jetpack Compose.  
+- Google and Jetbrains are two of my favorite technology-based business companies.  
+- Now you can develop Intellij plugins using Kotlin on Jetbrains' Intellij platform, and still use Jetbrains' Jetpack Compose-based Compose Multiplatform.  
+- What more could one wish for?  
 <!-- Plugin description end -->
 
 ## Installation
