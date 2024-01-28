@@ -1,26 +1,19 @@
 package com.github.codeideal.v2explugin.ui
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import coil3.ImageLoader
+import coil3.asCoilImage
+import coil3.compose.setSingletonImageLoaderFactory
+import coil3.memory.MemoryCache
+import coil3.request.CachePolicy
+import coil3.request.crossfade
+import coil3.util.DebugLogger
 import com.github.codeideal.v2explugin.koin.*
+import com.github.codeideal.v2explugin.ui.page.SamplePage
 import com.github.codeideal.v2explugin.ui.theme.AppTheme
+import com.github.codeideal.v2explugin.util.loadBitmap
 import org.koin.compose.KoinIsolatedContext
-import org.koin.compose.koinInject
 
 /**
  * @program: v2exPlugin
@@ -31,25 +24,33 @@ import org.koin.compose.koinInject
  *
  * @create: 2023/12/27 19:18
  **/
-@Suppress("FunctionName")
 @Composable
-fun App(v2exService:V2exService = koinInject()) {
+fun App() {
     KoinIsolatedContext(context = IsolateInjectContext.koinApp) {
-        AppTheme{
-            Box(contentAlignment = Alignment.Center) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    var randomInt by remember { mutableStateOf(0) }
-                    Text("Random: $randomInt")
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Button(onClick = { randomInt = v2exService.getRandomInt(10) }) {
-                        Icon(
-                            imageVector = Icons.Default.Refresh,
-                            contentDescription = "Refresh"
-                        )
-                        Text("Next Int")
+        // coil init
+        val placeHolderBitmap = remember { loadBitmap("pics/placeHolder.png") }
+        setSingletonImageLoaderFactory { context ->
+            ImageLoader.Builder(context)
+                .placeholder(placeHolderBitmap.asCoilImage())
+                .diskCachePolicy(CachePolicy.DISABLED)
+                .memoryCache {
+                    MemoryCache.Builder()
+                        // Set the max size to 25% of the app's available memory.
+                        .maxSizePercent(context, percent = 0.25)
+                        .build()
+                }
+                // Show a short crossfade when loading images asynchronously.
+                .crossfade(true)
+                // Enable logging if this is a debug build.
+                .apply {
+                    if (true) {
+                        logger(DebugLogger())
                     }
                 }
-            }
+                .build()
+        }
+        AppTheme{
+            SamplePage()
         }
     }
 }

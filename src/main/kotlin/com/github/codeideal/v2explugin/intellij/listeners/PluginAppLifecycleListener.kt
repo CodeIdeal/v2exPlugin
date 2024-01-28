@@ -1,4 +1,4 @@
-package com.github.codeideal.v2explugin.listeners
+package com.github.codeideal.v2explugin.intellij.listeners
 
 import com.github.codeideal.v2explugin.koin.IsolateInjectContext
 import com.intellij.ide.AppLifecycleListener

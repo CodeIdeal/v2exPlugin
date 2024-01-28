@@ -1,4 +1,4 @@
-package com.github.codeideal.v2explugin.services
+package com.github.codeideal.v2explugin.intellij.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger

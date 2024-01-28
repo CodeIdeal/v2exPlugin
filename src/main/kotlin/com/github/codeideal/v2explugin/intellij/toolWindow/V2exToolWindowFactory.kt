@@ -1,11 +1,11 @@
-package com.github.codeideal.v2explugin.toolWindow
+package com.github.codeideal.v2explugin.intellij.toolWindow
 
 import androidx.compose.ui.awt.ComposePanel
+import com.github.codeideal.v2explugin.ui.App
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.content.ContentFactory
-import com.github.codeideal.v2explugin.ui.AppSample
 import com.intellij.openapi.diagnostic.thisLogger
 
 
@@ -23,7 +23,7 @@ class V2exToolWindowFactory : ToolWindowFactory {
         toolWindow.contentManager.addContent(content)
     }
 
-    private fun getComposeComponent() = ComposePanel().apply { setContent { AppSample() } }
+    private fun getComposeComponent() = ComposePanel().apply { setContent { App() } }
 
     override fun shouldBeAvailable(project: Project) = true
 }

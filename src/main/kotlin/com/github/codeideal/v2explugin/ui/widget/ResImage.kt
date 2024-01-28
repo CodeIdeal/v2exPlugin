@@ -1,4 +1,4 @@
-package com.github.codeideal.v2explugin.widget
+package com.github.codeideal.v2explugin.ui.widget
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import com.github.codeideal.v2explugin.util.loadBitmap
 import com.intellij.openapi.diagnostic.thisLogger
 
-@Suppress("FunctionName")
 @Composable
 fun ResImage(
     resPath:String,
@@ -50,7 +49,7 @@ fun ResImage(
 }
 
 sealed class LoadState{
-    data object Loading:LoadState()
-    class Success(val bitmap: ImageBitmap):LoadState()
+    data object Loading: LoadState()
+    class Success(val bitmap: ImageBitmap): LoadState()
     data object Fail : LoadState()
 }

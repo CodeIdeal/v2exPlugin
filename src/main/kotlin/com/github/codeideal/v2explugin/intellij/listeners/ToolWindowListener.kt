@@ -1,4 +1,4 @@
-package com.github.codeideal.v2explugin.listeners
+package com.github.codeideal.v2explugin.intellij.listeners
 
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.wm.ToolWindow

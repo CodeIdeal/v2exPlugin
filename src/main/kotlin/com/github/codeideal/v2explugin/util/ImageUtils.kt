@@ -5,7 +5,7 @@ package com.github.codeideal.v2explugin.util
 import androidx.compose.ui.graphics.asSkiaBitmap
 import androidx.compose.ui.res.loadImageBitmap
 import androidx.compose.ui.res.useResource
-import com.github.codeideal.v2explugin.toolWindow.V2exToolWindowFactory
+import com.github.codeideal.v2explugin.intellij.toolWindow.V2exToolWindowFactory
 import org.jetbrains.skia.Bitmap
 import org.jetbrains.skia.Image
 

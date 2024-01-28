@@ -6,7 +6,7 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.testFramework.TestDataPath
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.util.PsiErrorElementUtil
-import com.github.codeideal.v2explugin.services.V2exService
+import com.github.codeideal.v2explugin.intellij.services.V2exService
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
 class V2exPluginTest : BasePlatformTestCase() {
