@@ -17,7 +17,7 @@ changelog = "2.2.0"
 gradleIntelliJPlugin = "1.16.1"
 qodana = "0.1.13"
 kover = "0.7.5"
-compose = "1.5.11"
+compose = "1.5.12"
 ksp = "1.9.22-1.0.17"
 
 [libraries]
