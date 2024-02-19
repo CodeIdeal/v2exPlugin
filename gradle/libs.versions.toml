@@ -16,7 +16,7 @@ kotlin = "1.9.22"
 changelog = "2.2.0"
 gradleIntelliJPlugin = "1.16.1"
 qodana = "0.1.13"
-kover = "0.7.5"
+kover = "0.7.6"
 compose = "1.5.11"
 ksp = "1.9.22-1.0.17"
 
